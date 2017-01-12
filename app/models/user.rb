@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :posts
   before_save { self.email = email.downcase if email.present? }
   before_save :format_name
 
@@ -23,7 +24,7 @@ class User < ActiveRecord::Base
          name_array << name_part.capitalize
        end
        self.name = name_array.join(" ")
-     end 
+     end
 
     end
 
