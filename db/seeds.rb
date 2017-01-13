@@ -62,6 +62,14 @@ end
    password: 'helloworld'
  )
 
+ # Create a moderator
+member = User.create!(
+  name: 'Moderator User',
+  email: 'mod@example.com',
+  password: 'password',
+  role: 'moderator'
+)
+
 
 
 puts "#{Post.count}"
