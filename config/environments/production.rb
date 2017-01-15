@@ -77,4 +77,8 @@ Bloccit::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.active_record.dump_schema_after_migration = false
+   config.action_mailer.default_url_options = { host: 'afternoon-reef-57698.herokuapp.com' }
+
 end

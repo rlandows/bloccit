@@ -70,7 +70,7 @@ end
  # Create a moderator
 member = User.create!(
   name: 'Moderator User',
-  email: 'mod@example.com',
+  email: 'rlandows@uci.edu',
   password: 'password',
   role: 'moderator'
 )
