@@ -14,8 +14,11 @@
          <h2 class="media-heading"><%= @user.name %></h2>
          <small>
            <%= pluralize(@user.posts.count, 'post') %>,
-           <%= pluralize(@user.comments.count, 'comment') %>
+           <%= pluralize(@user.comments.count, 'comment') %>,
+           <%= pluralize(@user.favorites.count, 'favorites') %>
          </small>
+
+
        </div>
      </div>
    </div>
@@ -23,7 +26,38 @@
 
 
  <h2>Posts</h2>
- <%= render @user.posts %>
+ <% if @user.posts.any? %>
+    <%= render @user.posts %>
+    <% else %>
+         <%= "#{@user.name} has not submitted any posts yet." %>
+    <% end %>
 
  <h2>Comments</h2>
- <%= render @user.comments %>
+
+ <% if @user.comments.any? %>
+    <%= render @user.comments %>
+    <% else %>
+         <%= "#{@user.name} has not submitted any comments yet." %>
+    <% end %>
+
+  <h2>Favorites</h2>
+
+  <% if @user.favorites.any? %>
+
+       <% @user.favorites.each do |f| %>
+
+        <%= image_tag(f.post.user.avatar_url(48), class: "gravatar") %><%= f.post.title %>,
+
+            <%= f.post.comments.count%> comments,
+            <%= f.post.points %> points
+            <br>
+
+
+
+
+        <% end %>
+
+
+     <% else %>
+         <%= "#{@user.name} has not submitted any favorites yet." %>
+    <% end %>
